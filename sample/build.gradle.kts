@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -45,9 +47,29 @@ android {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
+
+    // division resources
+    sourceSets {
+        getByName("main").let { data ->
+            data.res.setSrcDirs(emptySet<String>())
+            file("src/main/res").listFiles()?.toList()?.forEach { dir ->
+                data.res.srcDir(dir)
+            }
+        }
+    }
 }
 
 dependencies {
+    // Accompanist
     implementation(libs.bundles.accompanist)
+
+    // Jetpack Compose
     implementation(libs.bundles.compose)
+
+    // Hilt
+    implementation(libs.bundles.hilt)
+    kapt(libs.bundles.hiltKapt)
+
+    // Other
+    implementation(libs.bundles.other)
 }

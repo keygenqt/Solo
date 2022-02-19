@@ -15,44 +15,54 @@
  */
 package com.keygenqt.solo.sample
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.view.ViewTreeObserver
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.keygenqt.solo.sample.ui.theme.SoloTheme
+import androidx.activity.viewModels
+import androidx.navigation.compose.rememberNavController
+import com.keygenqt.solo.sample.base.MainViewModel
+import com.keygenqt.solo.sample.base.NavGraph
+import com.keygenqt.solo.sample.theme.SoloTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    /**
+     * Main ViewModel
+     */
+    private val viewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         setContent {
             SoloTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+                NavGraph(controller = rememberNavController())
             }
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    SoloTheme {
-        Greeting("Android")
+        // Splash delay
+        window.decorView.findViewById<View>(android.R.id.content)?.let { content ->
+            content.viewTreeObserver.addOnPreDrawListener(
+                object : ViewTreeObserver.OnPreDrawListener {
+                    override fun onPreDraw(): Boolean {
+                        return if (!viewModel.isSplash.value) {
+                            // remove BG splash
+                            this@MainActivity.window.apply {
+                                decorView.setBackgroundColor(Color.WHITE)
+                                navigationBarColor = Color.parseColor("#c3e5cc")
+                            }
+                            // done splash remove listener
+                            content.viewTreeObserver.removeOnPreDrawListener(this); true
+                        } else false
+                    }
+                }
+            )
+        }
     }
 }

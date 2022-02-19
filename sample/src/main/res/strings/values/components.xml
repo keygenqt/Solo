@@ -1,0 +1,16 @@
+<resources>
+    <string name="components_pager_indicators">Pager Indicators</string>
+    <string name="components_pager_indicators_desc">
+        For this to take effect, the window must be drawing the system bar backgrounds with windowDrawsSystemBarBackgrounds and the navigation bar must not have been
+    </string>
+
+    <string name="components_chips">Group chips</string>
+    <string name="components_chips_desc">
+        For this to take effect, the window must be drawing the system bar backgrounds with windowDrawsSystemBarBackgrounds and the navigation bar must not have been
+    </string>
+
+    <string name="components_loaders">Loaders</string>
+    <string name="components_loaders_desc">
+        For this to take effect, the window must be drawing the system bar backgrounds with windowDrawsSystemBarBackgrounds and the navigation bar must not have been
+    </string>
+</resources>
