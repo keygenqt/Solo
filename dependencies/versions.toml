@@ -1,0 +1,19 @@
+[versions]
+# Android
+compileSdk = "31"
+targetSdk = "31"
+minSdk = "23"
+
+# Base
+# https://kotlinlang.org/docs/releases.html#release-details
+kotlinVersion = "1.6.10"
+
+# Jetpack Compose
+# https://developer.android.com/jetpack/androidx/releases/compose-compiler
+composeVersion = "1.2.0-alpha03"
+# https://developer.android.com/jetpack/androidx/releases/compose-material
+materialVersion = "1.2.0-alpha03"
+
+# Accompanist
+# https://google.github.io/accompanist/
+accompanistVersion = "0.24.1-alpha"

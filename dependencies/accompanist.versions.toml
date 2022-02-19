@@ -1,0 +1,12 @@
+# modules
+[libraries.accompanist-insets]
+module = "com.google.accompanist:accompanist-insets"
+
+# versions
+[libraries.accompanist-insets.version]
+ref = "accompanistVersion"
+
+[bundles]
+accompanist = [
+    "accompanist-insets",
+]
