@@ -13,24 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.solo.sample.features.navigation.actions.impl
+package com.keygenqt.solo.sample.features.navigation.route.impl
 
-import androidx.navigation.NavHostController
-import com.keygenqt.solo.sample.features.navigation.route.NavRoute
-import com.keygenqt.solo.sample.features.ui.screens.welcome.WelcomeScreen
-import com.keygenqt.solo.sample.interfaces.IAppNavActions
+import com.keygenqt.routing.NavigationRoute
+import com.keygenqt.solo.sample.features.ui.screens.loaders.LoadersScreen
 
 /**
- * Actions for [WelcomeScreen]
+ * Routing for [LoadersScreen]
  */
-interface WelcomeActions : IAppNavActions {
-
-    override val controller: NavHostController
-
-    /**
-     * To welcome page
-     */
-    fun toWelcome() {
-        controller.navigate(NavRoute.welcome.default.route)
+object LoadersRoute {
+    val default = object : NavigationRoute {
+        override val route: String = "LoadersDefault"
     }
 }

@@ -22,7 +22,10 @@ import android.view.ViewTreeObserver
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.navigation.compose.rememberNavController
+import com.keygenqt.routing.NavigationDispatcher
+import com.keygenqt.solo.sample.base.LocalNavigationDispatcher
 import com.keygenqt.solo.sample.base.MainViewModel
 import com.keygenqt.solo.sample.base.NavGraph
 import com.keygenqt.solo.sample.theme.SoloTheme
@@ -41,8 +44,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            SoloTheme {
-                NavGraph(controller = rememberNavController())
+            rememberNavController().let { controller ->
+                CompositionLocalProvider(
+                    LocalNavigationDispatcher provides NavigationDispatcher(
+                        lifecycle = lifecycle,
+                        controller = controller,
+                        backPressedDispatcher = onBackPressedDispatcher
+                    )
+                ) {
+                    SoloTheme {
+                        NavGraph(controller = controller)
+                    }
+                }
             }
         }
 

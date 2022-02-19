@@ -13,24 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.solo.sample.features.navigation.actions.impl
+package com.keygenqt.solo.sample.features.ui.models
 
-import androidx.navigation.NavHostController
-import com.keygenqt.solo.sample.features.navigation.route.NavRoute
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import com.keygenqt.solo.sample.features.ui.screens.welcome.WelcomeScreen
-import com.keygenqt.solo.sample.interfaces.IAppNavActions
 
 /**
- * Actions for [WelcomeScreen]
+ * [ViewModel] for [WelcomeScreen]
  */
-interface WelcomeActions : IAppNavActions {
-
-    override val controller: NavHostController
-
-    /**
-     * To welcome page
-     */
-    fun toWelcome() {
-        controller.navigate(NavRoute.welcome.default.route)
-    }
-}
+@HiltViewModel
+class PagerIndicatorsViewModel @Inject constructor() : ViewModel()

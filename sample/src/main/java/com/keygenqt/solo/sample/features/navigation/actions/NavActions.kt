@@ -15,10 +15,16 @@
  */
 package com.keygenqt.solo.sample.features.navigation.actions
 
+import com.keygenqt.solo.sample.features.navigation.actions.impl.ChipsActions
+import com.keygenqt.solo.sample.features.navigation.actions.impl.LoadersActions
+import com.keygenqt.solo.sample.features.navigation.actions.impl.PagerIndicatorsActions
 import com.keygenqt.solo.sample.features.navigation.actions.impl.WelcomeActions
 
 /**
  * Base actions for feature
  */
 interface NavActions :
-    WelcomeActions
+    WelcomeActions,
+    ChipsActions,
+    LoadersActions,
+    PagerIndicatorsActions

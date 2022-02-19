@@ -15,7 +15,8 @@
  */
 package com.keygenqt.solo.sample.features.ui.actions
 
-import com.keygenqt.solo.sample.features.ui.screens.WelcomeScreen
+import com.keygenqt.solo.sample.features.ui.screens.welcome.WelcomeScreen
+import com.keygenqt.solo.sample.utils.Components
 
 /**
  * Actions sealed class for screen [WelcomeScreen]
@@ -23,7 +24,7 @@ import com.keygenqt.solo.sample.features.ui.screens.WelcomeScreen
 sealed class WelcomeActions {
 
     /**
-     * Open login page
+     * Open feature page
      */
-    object ToFeature : WelcomeActions()
+    data class ToPageFeature(val feature: Components) : WelcomeActions()
 }

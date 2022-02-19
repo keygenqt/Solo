@@ -15,20 +15,18 @@
  */
 package com.keygenqt.solo.sample.features.navigation.graph.impl
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.keygenqt.solo.sample.base.AppNavActions
 import com.keygenqt.solo.sample.features.navigation.route.NavRoute
 import com.keygenqt.solo.sample.features.ui.actions.WelcomeActions
-import com.keygenqt.solo.sample.features.ui.screens.WelcomeScreen
-import timber.log.Timber
+import com.keygenqt.solo.sample.features.ui.screens.welcome.WelcomeScreen
+import com.keygenqt.solo.sample.utils.Components
 
 /**
  * NavGraph for [WelcomeScreen]
  */
-@OptIn(ExperimentalAnimationApi::class)
 fun NavGraphBuilder.welcomeGraph(
     navActions: AppNavActions,
 ) {
@@ -37,8 +35,12 @@ fun NavGraphBuilder.welcomeGraph(
     ) {
         WelcomeScreen(viewModel = hiltViewModel()) { event ->
             when (event) {
-                is WelcomeActions.ToFeature -> {
-                    Timber.e("Temp")
+                is WelcomeActions.ToPageFeature -> {
+                    when (event.feature) {
+                        Components.PAGER_INDICATORS -> navActions.toPagerIndicators()
+                        Components.CHIPS -> navActions.toChips()
+                        Components.LOADERS -> navActions.toLoaders()
+                    }
                 }
             }
         }

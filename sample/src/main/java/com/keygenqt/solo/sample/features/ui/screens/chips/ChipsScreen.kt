@@ -13,15 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.solo.sample.features.ui.screens
+package com.keygenqt.solo.sample.features.ui.screens.chips
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
-import com.keygenqt.solo.sample.features.ui.actions.WelcomeActions
-import com.keygenqt.solo.sample.features.ui.models.WelcomeViewModel
-import com.keygenqt.solo.sample.utils.Components
+import com.keygenqt.solo.sample.base.LocalNavigationDispatcher
+import com.keygenqt.solo.sample.features.ui.actions.ChipsActions
+import com.keygenqt.solo.sample.features.ui.models.ChipsViewModel
 
 /**
  * Base page fun for initialization
@@ -30,13 +27,12 @@ import com.keygenqt.solo.sample.utils.Components
  * @param onActions actions for page
  */
 @Composable
-fun WelcomeScreen(
-    viewModel: WelcomeViewModel,
-    onActions: (WelcomeActions) -> Unit = {},
+fun ChipsScreen(
+    viewModel: ChipsViewModel,
+    onActions: (ChipsActions) -> Unit = {},
 ) {
-    Column {
-        Components.values().forEach { item ->
-            Text(text = "WelcomeScreen -> ${stringResource(id = item.title)}")
-        }
-    }
+    ChipsBody(
+        onActions = onActions,
+        navDispatcher = LocalNavigationDispatcher.current
+    )
 }

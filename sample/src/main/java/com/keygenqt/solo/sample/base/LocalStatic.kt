@@ -13,24 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.solo.sample.features.navigation.actions.impl
+package com.keygenqt.solo.sample.base
 
-import androidx.navigation.NavHostController
-import com.keygenqt.solo.sample.features.navigation.route.NavRoute
-import com.keygenqt.solo.sample.features.ui.screens.welcome.WelcomeScreen
-import com.keygenqt.solo.sample.interfaces.IAppNavActions
+import androidx.compose.runtime.staticCompositionLocalOf
+import com.keygenqt.routing.NavigationDispatcher
 
 /**
- * Actions for [WelcomeScreen]
+ * [NavigationDispatcher] Can be used in CompositionLocalProvider to provide values.
  */
-interface WelcomeActions : IAppNavActions {
-
-    override val controller: NavHostController
-
-    /**
-     * To welcome page
-     */
-    fun toWelcome() {
-        controller.navigate(NavRoute.welcome.default.route)
-    }
+val LocalNavigationDispatcher = staticCompositionLocalOf<NavigationDispatcher> {
+    error("No Back Dispatcher provided")
 }

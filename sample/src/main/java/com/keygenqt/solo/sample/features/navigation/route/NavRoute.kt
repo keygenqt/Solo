@@ -15,6 +15,9 @@
  */
 package com.keygenqt.solo.sample.features.navigation.route
 
+import com.keygenqt.solo.sample.features.navigation.route.impl.ChipsRoute
+import com.keygenqt.solo.sample.features.navigation.route.impl.LoadersRoute
+import com.keygenqt.solo.sample.features.navigation.route.impl.PagerIndicatorsRoute
 import com.keygenqt.solo.sample.features.navigation.route.impl.WelcomeRoute
 
 /**
@@ -22,4 +25,7 @@ import com.keygenqt.solo.sample.features.navigation.route.impl.WelcomeRoute
  */
 object NavRoute {
     val welcome = WelcomeRoute
+    val chips = ChipsRoute
+    val loaders = LoadersRoute
+    val pagerIndicators = PagerIndicatorsRoute
 }

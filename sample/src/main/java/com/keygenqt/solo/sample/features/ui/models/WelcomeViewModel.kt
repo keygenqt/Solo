@@ -16,9 +16,9 @@
 package com.keygenqt.solo.sample.features.ui.models
 
 import androidx.lifecycle.ViewModel
+import com.keygenqt.solo.sample.features.ui.screens.welcome.WelcomeScreen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import com.keygenqt.solo.sample.features.ui.screens.WelcomeScreen
 
 /**
  * [ViewModel] for [WelcomeScreen]

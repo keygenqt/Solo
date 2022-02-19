@@ -16,13 +16,13 @@
 package com.keygenqt.solo.sample.features.navigation.route.impl
 
 import com.keygenqt.routing.NavigationRoute
-import com.keygenqt.solo.sample.features.ui.screens.WelcomeScreen
+import com.keygenqt.solo.sample.features.ui.screens.welcome.WelcomeScreen
 
 /**
  * Routing for [WelcomeScreen]
  */
 object WelcomeRoute {
     val default = object : NavigationRoute {
-        override val route: String = "WelcomeRouteDefault"
+        override val route: String = "WelcomeDefault"
     }
 }

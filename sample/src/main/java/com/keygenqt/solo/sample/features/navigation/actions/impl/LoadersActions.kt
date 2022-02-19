@@ -17,20 +17,20 @@ package com.keygenqt.solo.sample.features.navigation.actions.impl
 
 import androidx.navigation.NavHostController
 import com.keygenqt.solo.sample.features.navigation.route.NavRoute
-import com.keygenqt.solo.sample.features.ui.screens.welcome.WelcomeScreen
+import com.keygenqt.solo.sample.features.ui.screens.loaders.LoadersScreen
 import com.keygenqt.solo.sample.interfaces.IAppNavActions
 
 /**
- * Actions for [WelcomeScreen]
+ * Actions for [LoadersScreen]
  */
-interface WelcomeActions : IAppNavActions {
+interface LoadersActions : IAppNavActions {
 
     override val controller: NavHostController
 
     /**
-     * To welcome page
+     * To loaders page
      */
-    fun toWelcome() {
-        controller.navigate(NavRoute.welcome.default.route)
+    fun toLoaders() {
+        controller.navigate(NavRoute.pagerIndicators.default.route)
     }
 }

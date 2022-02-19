@@ -13,23 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.keygenqt.solo.sample.features.navigation.graph
+package com.keygenqt.solo.sample.features.navigation.graph.impl
 
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
 import com.keygenqt.solo.sample.base.AppNavActions
-import com.keygenqt.solo.sample.features.navigation.graph.impl.chipsGraph
-import com.keygenqt.solo.sample.features.navigation.graph.impl.loadersGraph
-import com.keygenqt.solo.sample.features.navigation.graph.impl.pagerIndicatorsGraph
-import com.keygenqt.solo.sample.features.navigation.graph.impl.welcomeGraph
+import com.keygenqt.solo.sample.features.navigation.route.NavRoute
+import com.keygenqt.solo.sample.features.ui.screens.chips.ChipsScreen
 
 /**
- * Base block with graphs for feature
+ * NavGraph for [ChipsScreen]
  */
-fun NavGraphBuilder.navGraphFeatures(
+fun NavGraphBuilder.chipsGraph(
     navActions: AppNavActions,
 ) {
-    chipsGraph(navActions)
-    loadersGraph(navActions)
-    pagerIndicatorsGraph(navActions)
-    welcomeGraph(navActions)
+    composable(
+        route = NavRoute.chips.default.route
+    ) {
+        ChipsScreen(viewModel = hiltViewModel()) {
+
+        }
+    }
 }
