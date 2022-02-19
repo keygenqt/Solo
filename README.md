@@ -6,7 +6,7 @@ Solo
 ### Preview
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/kmm-GitHubViewer/master/data/Screen_Recording_2022-02-19_at_18.31.31.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/solo/master/data/Screen_Recording_2022-02-19_at_18.31.31.gif" width="33%"/>
 </p>
 
 # License
