@@ -32,7 +32,6 @@ fun NavGraphBuilder.chipsGraph(
         route = NavRoute.chips.default.route
     ) {
         ChipsScreen(viewModel = hiltViewModel()) {
-
         }
     }
 }

@@ -31,6 +31,6 @@ interface LoadersActions : IAppNavActions {
      * To loaders page
      */
     fun toLoaders() {
-        controller.navigate(NavRoute.pagerIndicators.default.route)
+        controller.navigate(NavRoute.loaders.default.route)
     }
 }

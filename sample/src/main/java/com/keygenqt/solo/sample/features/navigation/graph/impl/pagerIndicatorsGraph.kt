@@ -32,7 +32,6 @@ fun NavGraphBuilder.pagerIndicatorsGraph(
         route = NavRoute.pagerIndicators.default.route
     ) {
         PagerIndicatorsScreen(viewModel = hiltViewModel()) {
-
         }
     }
 }

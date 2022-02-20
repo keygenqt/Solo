@@ -34,3 +34,7 @@ startupVersion = "1.1.0"
 # Routing
 # https://github.com/keygenqt/compose-routing
 composeRoutingVersion = "0.0.3"
+
+# Lifecycle
+# https://developer.android.com/jetpack/androidx/releases/lifecycle
+lifecycleVersion = "2.4.0"

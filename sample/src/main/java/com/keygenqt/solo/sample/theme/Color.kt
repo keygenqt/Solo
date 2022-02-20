@@ -17,7 +17,34 @@ package com.keygenqt.solo.sample.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+/**
+ * Light theme
+ */
+val light_primary = Color(0xFFFFD7FB)
+val light_primaryVariant = Color(0xFFA8399D)
+val light_secondary = Color(0xFFE7E4FD)
+val light_secondaryVariant = Color(0xFF695BCA)
+val light_background = Color(0xFFFFFFFF)
+val light_surface = Color(0xFF5F57A2)
+val light_error = Color(0xFFFFA2A2)
+val light_onPrimary = Color(0xFF443642)
+val light_onSecondary = Color(0xFF242230)
+val light_onBackground = Color(0xFF0F1110)
+val light_onSurface = Color(0xFF181F1A)
+val light_onError = Color(0xFF1F1818)
+
+/**
+ * Dark theme
+ */
+val dark_primary = Color(0xFFFFD7FB)
+val dark_primaryVariant = Color(0xFFA8399D)
+val dark_secondary = Color(0xFFE7E4FD)
+val dark_secondaryVariant = Color(0xFF695BCA)
+val dark_background = Color(0xFFFFFFFF)
+val dark_surface = Color(0xFF5F57A2)
+val dark_error = Color(0xFFFFA2A2)
+val dark_onPrimary = Color(0xFF443642)
+val dark_onSecondary = Color(0xFF242230)
+val dark_onBackground = Color(0xFF0F1110)
+val dark_onSurface = Color(0xFF181F1A)
+val dark_onError = Color(0xFF1F1818)

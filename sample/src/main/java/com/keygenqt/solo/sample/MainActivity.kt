@@ -15,7 +15,7 @@
  */
 package com.keygenqt.solo.sample
 
-import android.graphics.Color
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
@@ -23,12 +23,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.compose.rememberNavController
 import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.solo.sample.base.LocalNavigationDispatcher
 import com.keygenqt.solo.sample.base.MainViewModel
 import com.keygenqt.solo.sample.base.NavGraph
-import com.keygenqt.solo.sample.theme.SoloTheme
+import com.keygenqt.solo.sample.theme.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,6 +43,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
+        // get ui mode
+        val uiMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         setContent {
             rememberNavController().let { controller ->
@@ -67,8 +71,15 @@ class MainActivity : ComponentActivity() {
                         return if (!viewModel.isSplash.value) {
                             // remove BG splash
                             this@MainActivity.window.apply {
-                                decorView.setBackgroundColor(Color.WHITE)
-                                navigationBarColor = Color.parseColor("#c3e5cc")
+                                if (uiMode == Configuration.UI_MODE_NIGHT_YES) {
+                                    decorView.setBackgroundColor(dark_background.toArgb())
+                                    navigationBarColor = dark_surface.toArgb()
+                                    statusBarColor = dark_primary.toArgb()
+                                } else {
+                                    decorView.setBackgroundColor(light_background.toArgb())
+                                    navigationBarColor = light_surface.toArgb()
+                                    statusBarColor = light_primary.toArgb()
+                                }
                             }
                             // done splash remove listener
                             content.viewTreeObserver.removeOnPreDrawListener(this); true

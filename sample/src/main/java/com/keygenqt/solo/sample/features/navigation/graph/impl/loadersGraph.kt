@@ -32,7 +32,6 @@ fun NavGraphBuilder.loadersGraph(
         route = NavRoute.loaders.default.route
     ) {
         LoadersScreen(viewModel = hiltViewModel()) {
-
         }
     }
 }
