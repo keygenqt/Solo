@@ -27,18 +27,18 @@ enum class Components(
 ) {
     PAGER_INDICATORS(
         icon = R.drawable.ic_pager_indicator,
-        title = R.string.components_pager_indicators,
-        description = R.string.components_pager_indicators_desc,
+        title = R.string.welcome_pager_indicators,
+        description = R.string.welcome_pager_indicators_desc,
         version = "0.0.1",
     ),
     CHIPS(
         icon = R.drawable.ic_chips,
-        title = R.string.components_chips,
-        description = R.string.components_chips_desc,
+        title = R.string.welcome_chips,
+        description = R.string.welcome_chips_desc,
     ),
     LOADERS(
         icon = R.drawable.ic_loader,
-        title = R.string.components_loaders,
-        description = R.string.components_loaders_desc,
+        title = R.string.welcome_loaders,
+        description = R.string.welcome_loaders_desc,
     ),
 }

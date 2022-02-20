@@ -6,7 +6,8 @@ Solo
 ### Preview
 
 <p>
-<img src="https://raw.githubusercontent.com/keygenqt/solo/master/data/Screen_Recording_2022-02-19_at_18.36.34.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/solo/master/data/Screen_Recording_2022-02-20_at_13.47.41.gif" width="33%"/>
+<img src="https://raw.githubusercontent.com/keygenqt/solo/master/data/Screen_Recording_2022-02-20_at_13.46.26.gif" width="33%"/>
 </p>
 
 # License

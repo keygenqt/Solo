@@ -15,6 +15,7 @@
  */
 package com.keygenqt.solo.sample.features.ui.screens.welcome
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,15 +23,20 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Label
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -39,6 +45,9 @@ import com.keygenqt.solo.sample.BuildConfig
 import com.keygenqt.solo.sample.R
 import com.keygenqt.solo.sample.compose.base.AppScaffold
 import com.keygenqt.solo.sample.compose.extension.graphicsCollapse
+import com.keygenqt.solo.sample.compose.texts.TextBody1
+import com.keygenqt.solo.sample.compose.texts.TextCaption
+import com.keygenqt.solo.sample.compose.texts.TextH6
 import com.keygenqt.solo.sample.features.ui.actions.WelcomeActions
 import com.keygenqt.solo.sample.utils.Components
 
@@ -118,32 +127,145 @@ private fun ItemFeature(
     item: Components,
     onClick: (Components) -> Unit
 ) {
+    val context = LocalContext.current
+    val message = stringResource(id = R.string.welcome_coming_soon)
+
     Box(
         modifier = Modifier
+            .height(IntrinsicSize.Min)
             .background(MaterialTheme.colors.secondary)
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 16.dp)
     ) {
         Card(
-            elevation = 3.dp,
+            shape = MaterialTheme.shapes.medium,
+            elevation = 12.dp,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp)
+                .align(Alignment.BottomStart)
+                .padding(top = 20.dp, bottom = 16.dp)
         ) {
-            Column(
+            Box(
                 modifier = Modifier
-                    .clickable {
-                        onClick(item)
-                    }
                     .background(MaterialTheme.colors.background)
-                    .padding(
-                        vertical = 30.dp,
-                        horizontal = 16.dp
-                    )
+                    .clickable(onClick = {
+                        if (item.version == null) {
+                            Toast
+                                .makeText(context, message, Toast.LENGTH_LONG)
+                                .show()
+                        } else {
+                            onClick(item)
+                        }
+                    })
             ) {
-                Text(
-                    text = stringResource(id = item.title)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 24.dp, bottom = 16.dp, end = 16.dp, start = 16.dp)
+                ) {
+                    TextH6(
+                        modifier = Modifier,
+                        text = stringResource(id = item.title)
+                    )
+
+                    Spacer(modifier = Modifier.size(8.dp))
+
+                    TextBody1(
+                        modifier = Modifier,
+                        text = stringResource(id = item.description)
+                    )
+
+                    Spacer(modifier = Modifier.size(16.dp))
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        item.version?.apply {
+                            Box(
+                                modifier = Modifier.size(18.dp),
+                            ) {
+                                Icon(
+                                    modifier = Modifier
+                                        .padding(bottom = 2.dp)
+                                        .size(14.dp)
+                                        .align(Alignment.Center),
+                                    imageVector = Icons.Filled.Label,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colors.onBackground
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.size(4.dp))
+
+                            TextCaption(
+                                modifier = Modifier,
+                                text = this
+                            )
+                        } ?: run {
+                            TextCaption(
+                                modifier = Modifier,
+                                text = stringResource(id = R.string.welcome_coming_soon)
+                            )
+                        }
+                    }
+                }
+            }
+        }
+
+        Card(
+            modifier = Modifier
+                .size(40.dp)
+                .offset(24.dp)
+                .align(Alignment.TopStart),
+            shape = CircleShape,
+            backgroundColor = MaterialTheme.colors.background,
+            elevation = 12.dp,
+        ) {
+            Box(
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .size(36.dp)
+                    .background(MaterialTheme.colors.primary)
+            ) {
+                Image(
+                    modifier = Modifier
+                        .size(22.dp)
+                        .align(Alignment.Center),
+                    colorFilter = ColorFilter.tint(MaterialTheme.colors.onPrimary),
+                    painter = painterResource(item.icon),
+                    contentDescription = null,
                 )
             }
         }
     }
+
+
+//    Box(
+//        modifier = Modifier
+//            .background(MaterialTheme.colors.secondary)
+//            .padding(horizontal = 16.dp),
+//    ) {
+//        Card(
+//            elevation = 3.dp,
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(bottom = 16.dp)
+//        ) {
+//            Column(
+//                modifier = Modifier
+//                    .clickable {
+//                        onClick(item)
+//                    }
+//                    .background(MaterialTheme.colors.background)
+//                    .padding(
+//                        vertical = 30.dp,
+//                        horizontal = 16.dp
+//                    )
+//            ) {
+//                Text(
+//                    text = stringResource(id = item.title)
+//                )
+//            }
+//        }
+//    }
 }
