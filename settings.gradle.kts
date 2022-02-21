@@ -37,4 +37,10 @@ dependencyResolutionManagement {
 
 rootProject.name = "Solo"
 
+// Sample app
 include(":sample")
+
+// Libs
+include(":libs:chips")
+include(":libs:loaders")
+include(":libs:pager-indicator")

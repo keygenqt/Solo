@@ -1,12 +1,17 @@
 # modules
-[libraries.accompanist-insets]
-module = "com.google.accompanist:accompanist-insets"
+[libraries.accompanist-pager]
+module = "com.google.accompanist:accompanist-pager"
+[libraries.accompanist-pager-indicators]
+module = "com.google.accompanist:accompanist-pager-indicators"
 
 # versions
-[libraries.accompanist-insets.version]
+[libraries.accompanist-pager.version]
+ref = "accompanistVersion"
+[libraries.accompanist-pager-indicators.version]
 ref = "accompanistVersion"
 
 [bundles]
 accompanist = [
-    "accompanist-insets",
+    "accompanist-pager",
+    "accompanist-pager-indicators",
 ]

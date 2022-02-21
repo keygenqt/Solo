@@ -59,6 +59,14 @@ android {
     }
 }
 
+// Libs
+dependencies {
+    implementation(project(":libs:chips"))
+    implementation(project(":libs:loaders"))
+    implementation(project(":libs:pager-indicator"))
+}
+
+// App
 dependencies {
     // Accompanist
     implementation(libs.bundles.accompanist)
