@@ -29,6 +29,7 @@ import com.keygenqt.solo.sample.compose.base.AppScaffold
 import com.keygenqt.solo.sample.features.ui.actions.PagerIndicatorsActions
 import com.keygenqt.solo.sample.features.ui.screens.pagerIndicators.items.DefaultManyPagerIndicators
 import com.keygenqt.solo.sample.features.ui.screens.pagerIndicators.items.DefaultPagerIndicators
+import com.keygenqt.solo.sample.features.ui.screens.pagerIndicators.items.SoloPagerIndicators
 
 /**
  * Body for [PagerIndicatorsScreen]
@@ -52,6 +53,7 @@ fun PagerIndicatorsBody(
         ) {
             DefaultPagerIndicators()
             DefaultManyPagerIndicators()
+            SoloPagerIndicators()
         }
     }
 }
