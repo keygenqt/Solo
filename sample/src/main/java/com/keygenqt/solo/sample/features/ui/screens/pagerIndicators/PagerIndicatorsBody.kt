@@ -27,8 +27,6 @@ import com.keygenqt.routing.NavigationDispatcher
 import com.keygenqt.solo.sample.R
 import com.keygenqt.solo.sample.compose.base.AppScaffold
 import com.keygenqt.solo.sample.features.ui.actions.PagerIndicatorsActions
-import com.keygenqt.solo.sample.features.ui.screens.pagerIndicators.items.DefaultManyPagerIndicators
-import com.keygenqt.solo.sample.features.ui.screens.pagerIndicators.items.DefaultPagerIndicators
 import com.keygenqt.solo.sample.features.ui.screens.pagerIndicators.items.SoloPagerIndicators
 
 /**
@@ -51,8 +49,6 @@ fun PagerIndicatorsBody(
                 .fillMaxSize()
                 .verticalScroll(scrollState),
         ) {
-            DefaultPagerIndicators()
-            DefaultManyPagerIndicators()
             SoloPagerIndicators()
         }
     }

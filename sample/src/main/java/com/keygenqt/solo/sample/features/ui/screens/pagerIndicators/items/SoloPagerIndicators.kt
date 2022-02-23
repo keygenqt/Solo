@@ -3,6 +3,7 @@ package com.keygenqt.solo.sample.features.ui.screens.pagerIndicators.items
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -10,16 +11,20 @@ import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import com.keygenqt.solo.pager_indicator.SoloHorizontalPagerIndicator
+import com.keygenqt.solo.pager_indicator.overload.SoloDefaultPagerIndicator
 import com.keygenqt.solo.sample.compose.texts.TextH3
 import com.keygenqt.solo.sample.compose.texts.TextH5
+import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun SoloPagerIndicators() {
 
+    val items = (0..8).toList()
+    val scope = rememberCoroutineScope()
     val state = rememberPagerState()
-    val count = 4
+    val count = items.size
 
     Column(
         modifier = Modifier
@@ -35,31 +40,25 @@ fun SoloPagerIndicators() {
         state = state,
         count = count
     ) { page ->
-        when (page) {
-            0 -> TextH3(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.Red),
-                text = "0"
-            )
-            1 -> TextH3(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.Gray),
-                text = "1"
-            )
-            2 -> TextH3(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.Blue),
-                text = "2"
-            )
-            3 -> TextH3(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.Cyan),
-                text = "3"
-            )
+        items.forEach { index ->
+            if (index == page) {
+                TextH3(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(
+                            listOf(
+                                Color.Red,
+                                Color.Gray,
+                                Color.Blue,
+                                Color.Cyan,
+                                Color.LightGray,
+                                Color.Magenta,
+                                Color.Yellow
+                            ).random()
+                        ),
+                    text = "${index + 1}"
+                )
+            }
         }
     }
 
@@ -68,9 +67,17 @@ fun SoloPagerIndicators() {
     Box(
         modifier = Modifier.fillMaxWidth(),
     ) {
-        SoloHorizontalPagerIndicator(
-            modifier = Modifier.align(Alignment.Center),
+        SoloDefaultPagerIndicator(
+            maxCount = 3,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .height(3.dp),
             pagerState = state,
+            onClick = {
+                scope.launch {
+                    state.animateScrollToPage(it)
+                }
+            }
         )
     }
 }
