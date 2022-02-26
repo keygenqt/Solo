@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntSize
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
@@ -34,9 +35,9 @@ internal fun BasePagerIndicator(
         contentAlignment = Alignment.CenterStart
     ) {
         when (style) {
-            StylesSoloPagerIndicator.StyleDefault -> DefaultPagerIndicator(
+            StylesSoloPagerIndicator.StyleDefault -> TwoPagerIndicator(
                 pagerState = pagerState,
-                size = size,
+                height = with(LocalDensity.current) { size.height.toDp() },
                 maxCount = if (pagerState.pageCount > maxCount) maxCount else pagerState.pageCount,
                 activeColor = activeColor,
                 inactiveColor = inactiveColor,

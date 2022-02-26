@@ -21,7 +21,7 @@ import timber.log.Timber
 @Composable
 fun SoloPagerIndicators() {
 
-    val items = (0..8).toList()
+    val items = (0..5).toList()
     val scope = rememberCoroutineScope()
     val state = rememberPagerState()
     val count = items.size
@@ -68,7 +68,7 @@ fun SoloPagerIndicators() {
         modifier = Modifier.fillMaxWidth(),
     ) {
         SoloDefaultPagerIndicator(
-            maxCount = 3,
+            maxCount = 6,
             modifier = Modifier
                 .align(Alignment.Center)
                 .height(3.dp),

@@ -32,6 +32,7 @@ internal fun DefaultPagerIndicator(
     inactiveColor: Color = activeColor.copy(ContentAlpha.disabled),
     onClick: ((Int) -> Unit)? = null,
 ) {
+
     if (maxCount != 0) {
 
         var indicatorWidth: Dp
@@ -40,9 +41,7 @@ internal fun DefaultPagerIndicator(
 
         val indicatorShape: Shape = RoundedCornerShape(3.dp)
 
-        val step = pagerState.pageCount.toDouble() / (maxCount.toDouble() - (maxCount.toDouble() / pagerState.pageCount.toDouble()))
-
-        Log.e("TAG ->", (step).toString())
+        val step = pagerState.pageCount.toDouble() / maxCount.toDouble()
 
         with(LocalDensity.current) {
             indicatorHeight = size.height.toDp()
@@ -64,10 +63,6 @@ internal fun DefaultPagerIndicator(
             repeat(maxCount) { page ->
                 if (onClick != null) {
                     Box(indicatorModifier.clickable {
-
-                        Log.e("TAG", (page * step).toString())
-                        Log.e("TAG", ((page * step).toInt()).toString())
-
                         onClick.invoke((page * step).toInt())
                     })
                 } else {
@@ -77,7 +72,7 @@ internal fun DefaultPagerIndicator(
         }
 
         val currentItem: Int = if (step != 0.0) {
-            (pagerState.currentPage.toDouble() / step).roundToInt()
+            (pagerState.currentPage.toDouble() / step).toInt()
         } else {
             0
         }
