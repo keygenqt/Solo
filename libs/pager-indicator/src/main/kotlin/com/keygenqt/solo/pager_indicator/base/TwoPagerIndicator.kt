@@ -23,6 +23,36 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 import kotlin.math.roundToInt
 
+fun remainder(size: Int, max: Int): Int {
+    var count = 0
+    var a = size
+    while (true) {
+        if (a % max == 0) {
+            return count
+        }
+        a -= 1
+        count++
+    }
+}
+
+
+fun getActionIndex(size: Int, max: Int, page: Int): Int {
+    return when {
+        max == 1 || page == 0 -> 0
+        page == max - 1 -> size - 1
+        max == 3 && page == 1 -> (size / 2f).roundToInt()
+        else -> {
+            val remainder = remainder(size, max)
+
+            Log.e("TAG", remainder.toString())
+
+            (page * ((size - remainder) / max) + (remainder / 2)).let {
+                it + if (it > (size - remainder) / 2 && remainder % 2 != 0) 1 else 0
+            }
+        }
+    }
+}
+
 @ExperimentalPagerApi
 @Composable
 internal fun TwoPagerIndicator(
@@ -37,32 +67,7 @@ internal fun TwoPagerIndicator(
     val size = DpSize(height * 24 / 3, height)
     val spacing = size.height * 8 / 3
 
-    fun remainder(size: Int, max: Int): Int {
-        var count = 0
-        var a = size
-        while (true) {
-            if (a % max == 0) {
-                return count
-            }
-            a -= 1
-            count++
-        }
-    }
 
-
-    fun getActionIndex(size: Int, max: Int, page: Int): Int {
-        return when {
-            max == 1 || page == 0 -> 0
-            page == max - 1 -> size - 1
-            max == 3 && page == 1 -> (size / 2f).roundToInt()
-            else -> {
-                val remainder = remainder(size, max)
-                (page * ((size - remainder) / max) + (remainder / 2)).let {
-                    it + if (it > (size - remainder) / 2 && remainder % 2 != 0) 1 else 0
-                }
-            }
-        }
-    }
 
     Row(
         horizontalArrangement = Arrangement.spacedBy(spacing),
